@@ -1,4 +1,4 @@
-# oc_tools
+# openshift_project
 
 Ansible role for creating or deleting an OpenShift project.
 
