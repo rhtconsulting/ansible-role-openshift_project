@@ -1,0 +1,29 @@
+# Creates or Deletes an OCP project
+#
+# REQUIRED VARIABLES
+#   project  - Name of the OpenShift project
+#   state    - 'exists' to ensure the project exists
+#              'absent' to ensure the project does not exist
+#   oc_tools - Location of the 'oc' tools binary
+
+- name: Verify 'oc_tools' defined
+  fail:
+    msg: "'oc_tools' must be defined"
+  when: oc_tools is undefined
+
+- name: Check if project already exists '{{ project }}'
+  command: >
+    {{ oc_tools }} get project {{ project }} --no-headers
+  register: project_result
+  ignore_errors: True
+  changed_when: False
+
+- name: Create project '{{ project }}'
+  command: >
+    {{ oc_tools }} new-project {{ project }}
+  when: state == 'exists' and 'not found' in project_result.stderr
+
+- name: Delete project '{{ project }}'
+  command: >
+    {{ oc_tools }} delete project {{ project }}
+  when: state == 'absent' and project_result.rc == 0

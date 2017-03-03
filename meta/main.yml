@@ -1,0 +1,23 @@
+galaxy_info:
+  author: Ian Tewksbury
+  description: Ansible role for creating or deleting an OpenShift project.
+  company: Red Hat
+  license: license (Apache)
+  min_ansible_version: 2.2.0
+  platforms:
+  - name: GenericLinux
+    versions:
+    - any
+  - name: EL
+    versions:
+    - 6
+    - 7
+  galaxy_tags:
+    - openshift
+    - tools
+    - redhat
+  categories:
+    - openshift
+    - tools
+    - redhat
+dependencies: []
