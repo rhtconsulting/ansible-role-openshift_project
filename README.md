@@ -47,4 +47,4 @@ Ansible role for creating or deleting an OpenShift project.
 
 ## Related Roles
 
-* oc_tools
+* [oc_tools](https://github.com/rhtconsulting/ansible-role-oc_tools)
